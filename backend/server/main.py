@@ -33,11 +33,12 @@ app = FastAPI(
 ROOT = Path(__file__).parent.parent
 
 ORIGINS = os.environ.get("CORS_ORIGINS", "").split(",")
+print(ORIGINS)
 
 if ORIGINS:
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=ORIGINS,
+        allow_origins=["*"], #  allow_origins=ORIGINS
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
